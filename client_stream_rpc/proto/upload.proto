@@ -1,0 +1,20 @@
+syntax = "proto3";
+option go_package = ".;proto";
+
+//下载服务
+//请求接受一个UploadReq（username+password)
+//响应回发多条数据（"true" or "false")
+service Upload{
+  rpc Upload(stream UploadReq)returns(UploadRes){}
+}
+
+message UploadReq {
+  string path = 1;
+  int64 offset = 2;
+  int64 size = 3;
+  bytes data = 4;
+}
+
+message UploadRes {
+  string msg = 1;
+}

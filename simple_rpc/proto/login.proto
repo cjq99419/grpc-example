@@ -1,0 +1,18 @@
+syntax = "proto3";
+option go_package = ".;proto";
+
+//登陆服务
+//请求接受一个LoginReq（username+password)
+//响应回发一条msg（"true" or "false")
+service Login{
+  rpc Login(LoginReq)returns(LoginRes){}
+}
+
+message LoginReq {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginRes {
+  string msg = 1;
+}
