@@ -1,0 +1,21 @@
+syntax = "proto3";
+option go_package = ".;proto";
+
+//下载服务
+//请求接受一个DownloadReq（username+password)
+//响应回发多条数据（"true" or "false")
+service Download{
+  rpc Download(DownloadReq)returns(stream DownloadRes){}
+}
+
+message DownloadReq {
+  string path = 1;
+  int64 offset = 2;
+  int64 size = 3;
+}
+
+message DownloadRes {
+  int64 offset = 1;
+  int64 size = 2;
+  bytes data = 3;
+}
