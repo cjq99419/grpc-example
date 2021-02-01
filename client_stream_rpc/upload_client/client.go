@@ -22,7 +22,7 @@ func main(){
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	//和简单rpc不同，此时获得的不是res，而是一个client的对象，通过这个连接对象去读取数据
+	//和简单rpc不同，此时获得的不是res，而是一个client的对象，通过这个连接对象去发送数据
 	uploadClient,err := client.Upload(ctx)
 	if err != nil {
 		log.Fatalln(err)
